@@ -9,7 +9,9 @@ use App\Http\Livewire\Pages\PilihBuku;
 use App\Http\Livewire\Pages\TambahBuku;
 use App\Http\Livewire\Pages\UbahBuku;
 use App\Http\Livewire\Pages\DaftarAnggota;
+use App\Http\Livewire\Pages\DaftarKategori;
 use App\Http\Livewire\Pages\TambahAnggota;
+use App\Http\Livewire\Pages\TambahKategori;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +35,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/pilih-buku', PilihBuku::class)->name('pilih-buku');
     Route::get('/tambah-buku', TambahBuku::class)->name('tambah-buku');
+    Route::get('/tambah-kategori', TambahKategori::class)->name('tambah-kategori');
+    Route::get('/daftar-kategori', DaftarKategori::class)->name('daftar-kategori');
     Route::get('/ubah-buku/{id}', UbahBuku::class)->name('ubah-buku');
+    
     Route::get('/daftar-anggota', DaftarAnggota::class)->name('daftar-anggota');
     Route::get('/tambah-anggota', TambahAnggota::class)->name('tambah-anggota');
 });

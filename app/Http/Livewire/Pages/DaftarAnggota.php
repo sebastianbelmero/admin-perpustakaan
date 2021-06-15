@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Pages;
 
+use App\Models\Member;
 use App\Models\VMember;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -74,5 +75,12 @@ class DaftarAnggota extends Component
     public function pilihIdAnggota($id) // Wajib
     {
         $this->idnya = $id;
+    }
+    public function hapusAnggota($idnya)
+    {
+        $item = Member::find($idnya);
+        $item->delete();
+        $this->reset();
+        $this->emit('Berhasil');
     }
 }

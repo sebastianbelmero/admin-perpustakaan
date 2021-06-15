@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Pages;
 
+use App\Models\Book;
 use App\Models\VBook;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -98,5 +99,12 @@ class DaftarBuku extends Component
     public function pilihIdBuku($id) // Wajib
     {
         $this->idnya = $id;
+    }
+    public function hapusBuku($idnya)
+    {
+        $item = Book::find($idnya);
+        $item->delete();
+        $this->reset();
+        $this->emit('Berhasil');
     }
 }
