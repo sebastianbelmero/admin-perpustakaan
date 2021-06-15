@@ -18,6 +18,7 @@ class Table extends Component
     public $search;
 
     protected $queryString = ['search'];
+    protected $listeners = ['refreshTable' => '$refresh'];
 
     public function mount()
     {

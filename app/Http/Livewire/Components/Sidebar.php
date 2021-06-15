@@ -31,13 +31,8 @@ class Sidebar extends Component
                 "route" => "pilih-buku",
                 "icon" => "bi bi-journal-check"
             ],
-            "tambah-kategori" => [
-                "name" => "Tambah Kategori",
-                "route" => "tambah-kategori",
-                "icon" => "bi bi-journal-check"
-            ],
             "daftar-kategori" => [
-                "name" => "Daftar Kategori",
+                "name" => "Kategori",
                 "route" => "daftar-kategori",
                 "icon" => "bi bi-journal-check"
             ],

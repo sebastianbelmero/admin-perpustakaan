@@ -3,10 +3,14 @@
         Daftar Usulan
     </h2>
 	id = {{  $idnya }}
-    @livewire('components.table', [
+    @if ($ada)	
+	@livewire('components.table', [
 		'key' => $key,
 		'model' => $model,
 		'param' => $param,
 		'ev' => $ev
 	])
+	@else
+	Data Kosong
+	@endif
 </div>

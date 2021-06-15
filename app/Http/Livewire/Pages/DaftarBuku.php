@@ -15,96 +15,104 @@ class DaftarBuku extends Component
     protected $listeners = ['pilihIdBuku']; // Wajib
 
     public $idnya; // Wajib
+    public $ada = false; // Wajib
+
     
     public function render()
     {
-        // masukkan "App\Models\{nama modelnya}"
-        $model = "App\Models\VBook"; // Wajib
-        $data = VBook::paginate(1); // Wajib
-        $collection = $data->toJson(); // Wajib
-        $collection = json_decode($collection, true); // Wajib
-        $key = $collection['data']; // Wajib
-        $key = array_keys($key[0]); // Wajib
-        // masukkan semua kolom yang ada di database
-        // tentukan juga apakah defaultnya ditampilkan apa nggak
-        $key = [
-            [
-                "key" => $key[0],
-                "value" => "id",
-                "show" => true
-            ],
-            [
-                "key" => $key[1],
-                "value" => "ISBN",
-                "show" => true
-            ],
-            [
-                "key" => $key[2],
-                "value" => "Judul",
-                "show" => true
-            ],
-            [
-                "key" => $key[3],
-                "value" => "Penerbit",
-                "show" => true
-            ],
-            [
-                "key" => $key[4],
-                "value" => "Pengarang",
-                "show" => true
-            ],
-            [
-                "key" => $key[5],
-                "value" => "Tahun",
-                "show" => false
-            ],
-            [
-                "key" => $key[6],
-                "value" => "Tanggal Masuk",
-                "show" => false
-            ],
-            [
-                "key" => $key[7],
-                "value" => "Edisi",
-                "show" => false
-            ],
-            [
-                "key" => $key[8],
-                "value" => "Website",
-                "show" => false
-            ],
-            [
-                "key" => $key[9],
-                "value" => "Email",
-                "show" => false
-            ],
-            [
-                "key" => $key[10],
-                "value" => "Jumlah",
-                "show" => false
-            ],
-            [
-                "key" => $key[11],
-                "value" => "Kategori",
-                "show" => false
-            ]
-        ]; // Wajib
-        $key = json_encode($key); // Wajib
-        // masukkan apa aja yang bisa di cari di table
-        $param = "isbn, judul, penerbit, pengarang"; // Wajib
-        $ev = "pilihIdBuku"; // Wajib
-        return view('livewire.pages.daftar-buku', compact('key','model', 'param', 'ev'));
+            // masukkan "App\Models\{nama modelnya}"
+            $model = "App\Models\VBook"; // Wajib
+            $data = $model::first(); // Wajib
+            if (!$data) {
+                return view('livewire.pages.daftar-buku');
+            }else{
+                $this->ada = true;
+                $collection = $data->toJson(); // Wajib
+                $collection = json_decode($collection, true); // Wajib
+                $key = $collection; // Wajib
+                $key = array_keys($key); // Wajib
+                // masukkan semua kolom yang ada di database
+                // tentukan juga apakah defaultnya ditampilkan apa nggak
+                $key = [
+                    [
+                        "key" => $key[0],
+                        "value" => "id",
+                        "show" => true
+                    ],
+                    [
+                        "key" => $key[1],
+                        "value" => "ISBN",
+                        "show" => true
+                    ],
+                    [
+                        "key" => $key[2],
+                        "value" => "Judul",
+                        "show" => true
+                    ],
+                    [
+                        "key" => $key[3],
+                        "value" => "Penerbit",
+                        "show" => true
+                    ],
+                    [
+                        "key" => $key[4],
+                        "value" => "Pengarang",
+                        "show" => true
+                    ],
+                    [
+                        "key" => $key[5],
+                        "value" => "Tahun",
+                        "show" => false
+                    ],
+                    [
+                        "key" => $key[6],
+                        "value" => "Tanggal Masuk",
+                        "show" => false
+                    ],
+                    [
+                        "key" => $key[7],
+                        "value" => "Edisi",
+                        "show" => false
+                    ],
+                    [
+                        "key" => $key[8],
+                        "value" => "Website",
+                        "show" => false
+                    ],
+                    [
+                        "key" => $key[9],
+                        "value" => "Email",
+                        "show" => false
+                    ],
+                    [
+                        "key" => $key[10],
+                        "value" => "Jumlah",
+                        "show" => false
+                    ],
+                    [
+                        "key" => $key[11],
+                        "value" => "Kategori",
+                        "show" => false
+                    ]
+                ]; // Wajib
+                $key = json_encode($key); // Wajib
+                // masukkan apa aja yang bisa di cari di table
+                $param = "isbn, judul, penerbit, pengarang"; // Wajib
+                $ev = "pilihIdBuku"; // Wajib
+                return view('livewire.pages.daftar-buku', compact('key','model', 'param', 'ev'));
+            }
+            
     }
 
     public function pilihIdBuku($id) // Wajib
     {
         $this->idnya = $id;
     }
-    public function hapusBuku($idnya)
+    public function hapusBuku()
     {
-        $item = Book::find($idnya);
+        $item = Book::find($this->idnya);
         $item->delete();
         $this->reset();
-        $this->emit('Berhasil');
+        $this->emit('refreshTable');
     }
 }

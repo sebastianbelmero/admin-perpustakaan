@@ -36,7 +36,7 @@ class TambahAnggota extends Component
         Member::create([
             'id_user' => $idUser,
             'nomor_induk' => $this->nomorInduk,
-            'kelas' => $this->kelas,
+            'kelas' => 1,
             'tgl_lahir' => $this->tglLahir,
             'jenis_kelamin' => $this->jenisKelamin,
 

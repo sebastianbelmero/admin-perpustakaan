@@ -15,12 +15,10 @@ class TambahKategori extends Component
     public function tambahKategori()
     {
         Category::create([
-
             'nama' => $this->nama
-
         ]);
 
         $this->reset();
-        return redirect()->route('daftar-kategori');
+        $this->emit('refreshTable');
     }
 }
