@@ -12,6 +12,8 @@ class DaftarKategori extends Component
 
     protected $listeners = ['pilihIdKategori', 'refreshTable' => '$refresh']; // Wajib
 
+    public $updateId=0;
+    public $nama = 0;
     public $idnya; // Wajib
     public $ada = false; //wajib
     
@@ -53,6 +55,22 @@ class DaftarKategori extends Component
     public function pilihIdKategori($id) // Wajib
     {
         $this->idnya = $id;
+    }
+    public function showFormKategori($idnya)
+    {
+        $item = Category::find($idnya);
+        $this->nama = $item->nama;
+        $this->updateId = $idnya;
+    }
+
+    public function ubahKategori($idnya)
+    {
+        $item = Category::find($idnya);
+        $item->nama = $this->nama;
+        $item->save();
+        $this->updateId = 0;
+        $this->reset();
+        $this->emit('refreshTable');
     }
     public function hapusKategori($idnya)
     {

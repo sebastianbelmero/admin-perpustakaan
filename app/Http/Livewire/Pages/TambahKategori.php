@@ -21,4 +21,5 @@ class TambahKategori extends Component
         $this->reset();
         $this->emit('refreshTable');
     }
+
 }
