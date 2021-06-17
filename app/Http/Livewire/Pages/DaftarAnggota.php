@@ -42,38 +42,43 @@ class DaftarAnggota extends Component
                 ],
                 [
                     "key" => $key[1],
+                    "value" => "Id Member",
+                    "show" => false
+                ],
+                [
+                    "key" => $key[2],
                     "value" => "Nama",
                     "show" => true
                 ],
                 [
-                    "key" => $key[2],
+                    "key" => $key[3],
                     "value" => "Email",
                     "show" => true
                 ],
                 [
-                    "key" => $key[3],
+                    "key" => $key[4],
                     "value" => "Nomor Induk",
                     "show" => true
                 ],
                 [
-                    "key" => $key[4],
+                    "key" => $key[5],
                     "value" => "Kelas",
                     "show" => true
                 ],
                 [
-                    "key" => $key[5],
+                    "key" => $key[6],
                     "value" => "TTL",
                     "show" => false
                 ],
                 [
-                    "key" => $key[6],
+                    "key" => $key[7],
                     "value" => "JK",
                     "show" => false
                 ]
             ]; // Wajib
             $key = json_encode($key); // Wajib
             // masukkan apa aja yang bisa di cari di table
-            $param = "name, email, nomor_induk, kelas"; // Wajib
+            $param = "name, email, nomor_induk, nama_kelas"; // Wajib
             $ev = "pilihIdAnggota"; // Wajib
             return view('livewire.pages.daftar-anggota', compact('key', 'model', 'param', 'ev'));
         }

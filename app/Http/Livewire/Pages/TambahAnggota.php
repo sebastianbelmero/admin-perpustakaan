@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pages;
 
 use App\Models\Kelas;
 use App\Models\Member;
+use App\Models\TahunAjaran;
 use App\Models\User;
 use Livewire\Component;
 
@@ -14,10 +15,12 @@ class TambahAnggota extends Component
     public $kelas;
     public $tglLahir;
     public $jenisKelamin;
+    public $tahun;
     public function render()
     {
-        $collection = Kelas::all();
-        return view('livewire.pages.tambah-anggota', compact('collection'));
+        $collection = Kelas::where('id_tahun_pelajaran', '=', $this->tahun)->get();
+        $tahunAjaran = TahunAjaran::all();
+        return view('livewire.pages.tambah-anggota', compact('collection', 'tahunAjaran'));
     }
     public function tambahAnggota()
     {
@@ -36,7 +39,7 @@ class TambahAnggota extends Component
         Member::create([
             'id_user' => $idUser,
             'nomor_induk' => $this->nomorInduk,
-            'kelas' => 1,
+            'kelas' => $this->kelas,
             'tgl_lahir' => $this->tglLahir,
             'jenis_kelamin' => $this->jenisKelamin,
 

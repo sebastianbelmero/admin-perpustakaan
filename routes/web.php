@@ -10,6 +10,10 @@ use App\Http\Livewire\Pages\TambahBuku;
 use App\Http\Livewire\Pages\UbahBuku;
 use App\Http\Livewire\Pages\DaftarAnggota;
 use App\Http\Livewire\Pages\DaftarKategori;
+use App\Http\Livewire\Pages\Kelas\DaftarKelas;
+use App\Http\Livewire\Pages\Kelas\TambahKelas;
+use App\Http\Livewire\Pages\Tahun\DaftarTahunAjaran;
+use App\Http\Livewire\Pages\Tahun\TambahTahunAjaran;
 use App\Http\Livewire\Pages\TambahAnggota;
 use App\Http\Livewire\Pages\TambahKategori;
 
@@ -38,9 +42,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tambah-kategori', TambahKategori::class)->name('tambah-kategori');
     Route::get('/daftar-kategori', DaftarKategori::class)->name('daftar-kategori');
     Route::get('/ubah-buku/{id}', UbahBuku::class)->name('ubah-buku');
-    
     Route::get('/daftar-anggota', DaftarAnggota::class)->name('daftar-anggota');
     Route::get('/tambah-anggota', TambahAnggota::class)->name('tambah-anggota');
+    Route::get('/daftar-tahun-ajaran', DaftarTahunAjaran::class)->name('daftar-tahun-ajaran');
+    Route::get('/tambah-tahun-ajaran', TambahTahunAjaran::class)->name('tambah-tahun-ajaran');
+    Route::get('/daftar-kelas', DaftarKelas::class)->name('daftar-kelas');
+    Route::get('/tambah-kelas', TambahKelas::class)->name('tambah-kelas');
 });
 
 

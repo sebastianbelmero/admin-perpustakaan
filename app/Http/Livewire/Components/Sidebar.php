@@ -36,11 +36,6 @@ class Sidebar extends Component
                 "route" => "daftar-kategori",
                 "icon" => "bi bi-journal-check"
             ],
-            // "ubah-buku" => [
-            //     "name" => "Ubah Buku",
-            //     "route" => "ubah-buku",
-            //     "icon" => "bi bi-journal-text"
-            // ],
             "daftar-saran" => [
                 "name" => "Daftar Saran",
                 "route" => "daftar-saran",
@@ -49,6 +44,16 @@ class Sidebar extends Component
             "daftar-usulan-buku" => [
                 "name" => "Usulan Buku",
                 "route" => "daftar-usulan-buku",
+                "icon" => "bi bi-journal-medical"
+            ],
+            "daftar-tahun-ajaran" => [
+                "name" => "Tahun Ajaran",
+                "route" => "daftar-tahun-ajaran",
+                "icon" => "bi bi-journal-medical"
+            ],
+            "daftar-kelas" => [
+                "name" => "Kelas",
+                "route" => "daftar-kelas",
                 "icon" => "bi bi-journal-medical"
             ],
             "daftar-anggota" => [
