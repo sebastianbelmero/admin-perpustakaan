@@ -12,8 +12,10 @@ use App\Http\Livewire\Pages\DaftarAnggota;
 use App\Http\Livewire\Pages\DaftarKategori;
 use App\Http\Livewire\Pages\Kelas\DaftarKelas;
 use App\Http\Livewire\Pages\Kelas\TambahKelas;
+use App\Http\Livewire\Pages\Kelas\UbahKelas;
 use App\Http\Livewire\Pages\Tahun\DaftarTahunAjaran;
 use App\Http\Livewire\Pages\Tahun\TambahTahunAjaran;
+use App\Http\Livewire\Pages\Tahun\UbahTahun;
 use App\Http\Livewire\Pages\TambahAnggota;
 use App\Http\Livewire\Pages\TambahKategori;
 
@@ -48,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tambah-tahun-ajaran', TambahTahunAjaran::class)->name('tambah-tahun-ajaran');
     Route::get('/daftar-kelas', DaftarKelas::class)->name('daftar-kelas');
     Route::get('/tambah-kelas', TambahKelas::class)->name('tambah-kelas');
+    Route::get('/ubah-kelas/{id}', UbahKelas::class)->name('ubah-kelas');
 });
 
 

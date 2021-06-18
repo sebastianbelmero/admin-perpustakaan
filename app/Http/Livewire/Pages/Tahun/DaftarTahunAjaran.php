@@ -12,6 +12,8 @@ class DaftarTahunAjaran extends Component
 
     protected $listeners = ['pilihIdTahun']; // Wajib
 
+    public $updateId=0;
+    public $tahun=0;
     public $idnya; // Wajib
     public $ada = false; // Wajib
 
@@ -55,4 +57,20 @@ class DaftarTahunAjaran extends Component
     {
         $this->idnya = $id;
     }
+    public function showFormTahun($idnya)
+    {
+        $item = TahunAjaran::find($idnya);
+        $this->tahun = $item->tahun;
+        $this->updateId = $idnya;
+    }
+    public function ubahTahun($idnya)
+    {
+        $item = TahunAjaran::find($idnya);
+        $item->tahun = $this->tahun;
+        $item->save();
+        $this->updateId = 0;
+        $this->reset();
+        $this->emit('refreshTable');
+    }
+
 }
