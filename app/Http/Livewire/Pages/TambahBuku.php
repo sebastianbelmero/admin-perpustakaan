@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Pages;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class TambahBuku extends Component
@@ -39,8 +40,9 @@ class TambahBuku extends Component
 
     public function tambahBuku()
     {
-        Book::create([
-            'isbn' => $this->isbn,
+        $validatedData = Validator::make(
+            [
+                'isbn' => $this->isbn,
             'judul' => $this->judul,
             'penerbit' => $this->penerbit,
             'pengarang' => $this->pengarang,
@@ -51,8 +53,30 @@ class TambahBuku extends Component
             'email' => $this->email,
             'jumlah' => $this->jumlah,
             'id_kategori' => $this->kategori
-
-        ]);
+            ],
+            [
+                'isbn' => 'required|max:17',
+                'judul' => 'required',
+                'penerbit' => 'required',
+                'pengarang' => 'required',
+                'tahun' => 'required',
+                'tgl_masuk' => 'required',
+                'jumlah' => 'required',
+                'id_kategori' => 'required'
+            ],
+            [
+                'isbn.required' => 'ISBN tidak boleh kosong!',
+                'judul.required' => 'Judul tidak boleh kosong!',
+                'penerbit.required' => 'Penerbit tidak boleh kosong!',
+                'pengarang.required' => 'Pengarang tidak boleh kosong!',
+                'tahun.required' => 'Tahun terbit tidak boleh kosong!',
+                'tgl_masuk.required' => 'Tanggal masuk tidak boleh kosong!',
+                'jumlah.required' => 'Jumlah tidak boleh kosong!',
+                'id_kategori.required' => 'Kategori tidak boleh kosong!',
+                'isbn.max' => 'ISBN maksimal terdiri atas 17 karakter'
+            ],
+        )->validate();
+        Book::create($validatedData);
 
         $this->reset();
         return redirect()->route('daftar-buku');

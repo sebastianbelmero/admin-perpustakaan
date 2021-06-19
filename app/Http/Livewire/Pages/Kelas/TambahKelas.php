@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pages\Kelas;
 
 use App\Models\Kelas;
 use App\Models\TahunAjaran;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class TambahKelas extends Component
@@ -18,10 +19,21 @@ class TambahKelas extends Component
 
     public function tambahTahunAjaran()
     {
-        Kelas::create([
-            'id_tahun_pelajaran' => $this->tahun,
-            'nama_kelas' => $this->kelas
-        ]);
+        $validatedData = Validator::make(
+            [
+                'id_tahun_pelajaran' => $this->tahun,
+                'nama_kelas' => $this->kelas
+            ],
+            [
+                'id_tahun_pelajaran' => 'required',
+                'nama_kelas' => 'required'
+            ],
+            [
+                'id_tahun_pelajaran.required' => 'Tahun ajaran tidak boleh kosong!',
+                'nama_kelas.required' => 'Kelas tidak boleh kosong!'
+            ],
+        )->validate();
+        Kelas::create($validatedData);
 
         $this->reset();
         $this->emit('refreshTable');

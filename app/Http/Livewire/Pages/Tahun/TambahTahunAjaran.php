@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Pages\Tahun;
 
 use App\Models\TahunAjaran;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class TambahTahunAjaran extends Component
@@ -16,9 +17,12 @@ class TambahTahunAjaran extends Component
 
     public function tambahTahunAjaran()
     {
-        TahunAjaran::create([
-            'tahun' => $this->tahun
-        ]);
+        $validatedData = Validator::make(
+            ['tahun' => $this->tahun],
+            ['tahun' => 'required'],
+            ['required' => 'Tahun ajaran tidak boleh kosong!'],
+        )->validate();
+        TahunAjaran::create($validatedData);
 
         $this->reset();
         $this->emit('refreshTable');

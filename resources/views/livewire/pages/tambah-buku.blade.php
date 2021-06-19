@@ -10,6 +10,9 @@
                 <div>
                     <label for="labelJudul">Judul</label>
                     <input type="text" wire:model.defer="judul" class="w-full rounded px-2 py-1" id="labelJudul" placeholder="Input Judul" />
+                    @if($errors->has('judul'))
+                    <p class="text-red-500">{{ $errors->first('judul') }}</p>
+                    @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
@@ -21,36 +24,54 @@
                             <option value="{{ $item->id }}">{{ $item->nama }}</option>
                         @endforeach
                     </select>
+                    @if($errors->has('id_kategori'))
+                <p class="text-red-500">{{ $errors->first('id_kategori') }}</p>
+                @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
                 <div>
                     <label for="labelISBN">ISBN</label>
                     <input type="text" wire:model.defer="isbn" class="w-full rounded px-2 py-1" id="labelISBN" placeholder="Input ISBN" />
+                    @if($errors->has('isbn'))
+                    <p class="text-red-500">{{ $errors->first('isbn') }}</p>
+                    @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
                 <div>
                     <label for="labelPenerbit">Penerbit</label>
                     <input type="text" wire:model.defer="penerbit" class="w-full rounded px-2 py-1" id="labelPenerbit" placeholder="Input Penerbit" />
+                    @if($errors->has('penerbit'))
+                    <p class="text-red-500">{{ $errors->first('penerbit') }}</p>
+                    @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
                 <div>
                     <label for="labelPengarang">Pengarang</label>
                     <input type="text" wire:model.defer="pengarang" class="w-full rounded px-2 py-1" id="labelPengarang" placeholder="Input Pengarang" />
+                    @if($errors->has('pengarang'))
+                <p class="text-red-500">{{ $errors->first('pengarang') }}</p>
+                @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
                 <div>
                     <label for="labelTahun">Tahun</label>
                     <input type="text" wire:model.defer="tahun" class="w-full rounded px-2 py-1" id="labelTahun" placeholder="Input Tahun Penerbitan Buku" />
+                    @if($errors->has('tahun'))
+                    <p class="text-red-500">{{ $errors->first('tahun') }}</p>
+                    @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
                 <div>
                     <label for="labelTgl-masuk">Tanggal Masuk</label>
                     <input type="date" wire:model.defer="tglMasuk" class="w-full rounded px-2 py-1" id="labelTgl-masuk" />
+                    @if($errors->has('tgl_masuk'))
+                    <p class="text-red-500">{{ $errors->first('tgl_masuk') }}</p>
+                    @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
@@ -76,6 +97,9 @@
                 <div>
                     <label for="labelJumlah">Jumlah</label>
                     <input type="number" wire:model.defer="jumlah" class="w-full rounded px-2 py-1" id="labelJumlah" placeholder="Input Jumlah Buku" />
+                    @if($errors->has('jumlah'))
+                <p class="text-red-500">{{ $errors->first('jumlah') }}</p>
+                @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
