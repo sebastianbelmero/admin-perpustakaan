@@ -63,6 +63,6 @@ class DaftarSaran extends Component
     }
     public function pilihIdSaran($id) // Wajib
     {
-        $this->idnya = $id;
+        return redirect()->route('detail-saran', $id);
     }
 }

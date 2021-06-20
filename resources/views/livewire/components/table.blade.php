@@ -104,7 +104,7 @@
 						@php
 						$index = $item['key'];
 						@endphp
-						<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block relative lg:static {{ $item['key'] }} {{ isset($hidden[$item['key']]) && $hidden[$item['key']] ? 'lg:table-cell' : 'hidden' }}">
+						<td class="w-full lg:w-auto p-3 text-gray-800 text-center lg:text-left border border-b block relative lg:static {{ $item['key'] }} {{ isset($hidden[$item['key']]) && $hidden[$item['key']] ? 'lg:table-cell' : 'hidden' }}">
 							<span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ $item['value'] }}</span>
 							{{ Str::limit($value[$index], 15) }}
 						</td>

@@ -88,6 +88,7 @@ class DaftarAnggota extends Component
     {
         $this->idnya = $id;
     }
+    
     public function hapusAnggota()
     {
         $user = User::find($this->idnya);
@@ -97,5 +98,25 @@ class DaftarAnggota extends Component
         $member->delete();
         $this->reset();
         $this->emit('refreshTable');
+    }
+
+    public function resetData()
+    {
+        $user = User::find($this->idnya);
+        $memberc = MemberUser::find($this->idnya);
+        $member = Member::find($memberc->id);
+        $email = explode(' ', $user->name);
+        $email = implode('.', $email);
+        $email = strtolower($email)."@student.ac.id";
+        $user->password = password_hash($member->nomor_induk, PASSWORD_DEFAULT);
+        $user->email = $email; 
+        $user->save();
+        $this->reset();
+        $this->emit('refreshTable');       
+    }
+
+    public function detail()
+    {
+        return redirect()->route('detail-member', $this->idnya);
     }
 }

@@ -22,7 +22,8 @@ class DaftarBuku extends Component
     {
             // masukkan "App\Models\{nama modelnya}"
             $model = "App\Models\VBook"; // Wajib
-            $data = $model::first(); // Wajib
+            $data = VBook::first(); // Wajib
+            $abc = VBook::all();
             if (!$data) {
                 return view('livewire.pages.daftar-buku');
             }else{
@@ -99,7 +100,7 @@ class DaftarBuku extends Component
                 // masukkan apa aja yang bisa di cari di table
                 $param = "isbn, judul, penerbit, pengarang"; // Wajib
                 $ev = "pilihIdBuku"; // Wajib
-                return view('livewire.pages.daftar-buku', compact('key','model', 'param', 'ev'));
+                return view('livewire.pages.daftar-buku', compact('key','model', 'param', 'ev', 'abc'));
             }
             
     }

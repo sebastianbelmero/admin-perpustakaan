@@ -10,9 +10,14 @@ use App\Http\Livewire\Pages\TambahBuku;
 use App\Http\Livewire\Pages\UbahBuku;
 use App\Http\Livewire\Pages\DaftarAnggota;
 use App\Http\Livewire\Pages\DaftarKategori;
+use App\Http\Livewire\Pages\Detail\DetailSaran;
+use App\Http\Livewire\Pages\Detail\DetailUsulan;
 use App\Http\Livewire\Pages\Kelas\DaftarKelas;
 use App\Http\Livewire\Pages\Kelas\TambahKelas;
 use App\Http\Livewire\Pages\Kelas\UbahKelas;
+use App\Http\Livewire\Pages\Member\DetailMember;
+use App\Http\Livewire\Pages\Pinjam\DaftarPinjam;
+use App\Http\Livewire\Pages\Pinjam\DetailPinjam;
 use App\Http\Livewire\Pages\Tahun\DaftarTahunAjaran;
 use App\Http\Livewire\Pages\Tahun\TambahTahunAjaran;
 use App\Http\Livewire\Pages\Tahun\UbahTahun;
@@ -51,6 +56,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/daftar-kelas', DaftarKelas::class)->name('daftar-kelas');
     Route::get('/tambah-kelas', TambahKelas::class)->name('tambah-kelas');
     Route::get('/ubah-kelas/{id}', UbahKelas::class)->name('ubah-kelas');
+    Route::get('/pinjam/daftar-pinjam', DaftarPinjam::class)->name('daftar-pinjam');
+    Route::get('/detail-member/{id}', DetailMember::class)->name('detail-member');
+    Route::get('/detail-pinjam/{id}', DetailPinjam::class)->name('detail-pinjam');
+    Route::get('/detail-saran/{id}', DetailSaran::class)->name('detail-saran');
+    Route::get('/detail-usulan/{id}', DetailUsulan::class)->name('detail-usulan');
 });
 
 

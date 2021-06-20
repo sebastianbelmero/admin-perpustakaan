@@ -33,9 +33,6 @@
                 <div>
                     <label for="labelISBN">ISBN</label>
                     <input type="text" wire:model.defer="isbn" class="w-full rounded px-2 py-1" id="labelISBN" placeholder="Input ISBN" />
-                    @if($errors->has('isbn'))
-                    <p class="text-red-500">{{ $errors->first('isbn') }}</p>
-                    @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
@@ -60,9 +57,6 @@
                 <div>
                     <label for="labelTahun">Tahun</label>
                     <input type="text" wire:model.defer="tahun" class="w-full rounded px-2 py-1" id="labelTahun" placeholder="Input Tahun Penerbitan Buku" />
-                    @if($errors->has('tahun'))
-                    <p class="text-red-500">{{ $errors->first('tahun') }}</p>
-                    @endif
                 </div>
             </div>
             <div class="w-full md:w-1/2 p-1">

@@ -26,7 +26,7 @@ class TambahAnggota extends Component
     {
         $email = explode(' ', $this->nama);
         $email = implode('.', $email);
-        $email = $email."@student.ac.id";
+        $email = strtolower($email)."@student.ac.id";
         User::create([
             'name' => $this->nama,
             'email' => $email,

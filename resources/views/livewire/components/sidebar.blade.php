@@ -18,7 +18,7 @@
                             text-gray-800
                             dark:text-gray-200
                         " href="#">
-					Windmill
+					Perpustakaan
 				</a>
 				<ul class="mt-6">
                     @foreach ($links as $key => $link)
@@ -88,7 +88,7 @@
                             text-gray-800
                             dark:text-gray-200
                         " href="#">
-					Windmill
+					Perpustakaan
 				</a>
 				<ul class="mt-6">
                     @foreach ($links as $key => $link)

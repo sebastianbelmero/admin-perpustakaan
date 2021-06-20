@@ -43,40 +43,50 @@ class TambahBuku extends Component
         $validatedData = Validator::make(
             [
                 'isbn' => $this->isbn,
-            'judul' => $this->judul,
-            'penerbit' => $this->penerbit,
-            'pengarang' => $this->pengarang,
-            'tahun' => $this->tahun,
-            'tgl_masuk' => $this->tglMasuk,
-            'edisi' => $this->edisi,
-            'website' => $this->website,
-            'email' => $this->email,
-            'jumlah' => $this->jumlah,
-            'id_kategori' => $this->kategori
+                'judul' => $this->judul,
+                'penerbit' => $this->penerbit,
+                'pengarang' => $this->pengarang,
+                'tahun' => $this->tahun,
+                'tgl_masuk' => $this->tglMasuk,
+                'edisi' => $this->edisi,
+                'website' => $this->website,
+                'email' => $this->email,
+                'jumlah' => $this->jumlah,
+                'id_kategori' => $this->kategori
             ],
             [
-                'isbn' => 'required|max:17',
+                'isbn' => 'max:17',
                 'judul' => 'required',
                 'penerbit' => 'required',
                 'pengarang' => 'required',
-                'tahun' => 'required',
-                'tgl_masuk' => 'required',
                 'jumlah' => 'required',
                 'id_kategori' => 'required'
             ],
             [
-                'isbn.required' => 'ISBN tidak boleh kosong!',
                 'judul.required' => 'Judul tidak boleh kosong!',
                 'penerbit.required' => 'Penerbit tidak boleh kosong!',
                 'pengarang.required' => 'Pengarang tidak boleh kosong!',
-                'tahun.required' => 'Tahun terbit tidak boleh kosong!',
                 'tgl_masuk.required' => 'Tanggal masuk tidak boleh kosong!',
                 'jumlah.required' => 'Jumlah tidak boleh kosong!',
                 'id_kategori.required' => 'Kategori tidak boleh kosong!',
                 'isbn.max' => 'ISBN maksimal terdiri atas 17 karakter'
             ],
         )->validate();
-        Book::create($validatedData);
+        if ($validatedData) {
+            Book::create([
+                'isbn' => $this->isbn,
+                'judul' => $this->judul,
+                'penerbit' => $this->penerbit,
+                'pengarang' => $this->pengarang,
+                'tahun' => $this->tahun,
+                'tgl_masuk' => $this->tglMasuk,
+                'edisi' => $this->edisi,
+                'website' => $this->website,
+                'email' => $this->email,
+                'jumlah' => $this->jumlah,
+                'id_kategori' => $this->kategori
+            ]);
+        }
 
         $this->reset();
         return redirect()->route('daftar-buku');
