@@ -2,7 +2,7 @@
     <form wire:submit.prevent="tambahTahunAjaran">
         <div class="flex flex-wrap items-center">
             <div class="w-full lg:w-3/4 p-1">
-                <input wire:model.defer="tahun" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Nama Kategori">
+                <input wire:model.defer="tahun" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Tahun Ajaran">
                 @if($errors->has('tahun'))
                 <p class="text-red-500">{{ $errors->first('tahun') }}</p>
                 @endif

@@ -15,6 +15,13 @@ use App\Http\Livewire\Pages\Detail\DetailUsulan;
 use App\Http\Livewire\Pages\Kelas\DaftarKelas;
 use App\Http\Livewire\Pages\Kelas\TambahKelas;
 use App\Http\Livewire\Pages\Kelas\UbahKelas;
+use App\Http\Livewire\Pages\Log\DetailLogBuku;
+use App\Http\Livewire\Pages\Log\LogAjaran;
+use App\Http\Livewire\Pages\Log\LogBuku;
+use App\Http\Livewire\Pages\Log\LogKategori;
+use App\Http\Livewire\Pages\Log\LogKelas;
+use App\Http\Livewire\Pages\Log\LogMember;
+use App\Http\Livewire\Pages\Log\LogPinjam;
 use App\Http\Livewire\Pages\Member\DetailMember;
 use App\Http\Livewire\Pages\Pinjam\DaftarPinjam;
 use App\Http\Livewire\Pages\Pinjam\DetailPinjam;
@@ -34,16 +41,12 @@ use App\Http\Livewire\Pages\TambahKategori;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/daftar-buku', DaftarBuku::class)->name('daftar-buku');
     Route::get('/daftar-saran', DaftarSaran::class)->name('daftar-saran');
     Route::get('/daftar-usulan-buku', DaftarUsulanBuku::class)->name('daftar-usulan-buku');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
+    Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/pilih-buku', PilihBuku::class)->name('pilih-buku');
     Route::get('/tambah-buku', TambahBuku::class)->name('tambah-buku');
     Route::get('/tambah-kategori', TambahKategori::class)->name('tambah-kategori');
@@ -61,6 +64,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/detail-pinjam/{id}', DetailPinjam::class)->name('detail-pinjam');
     Route::get('/detail-saran/{id}', DetailSaran::class)->name('detail-saran');
     Route::get('/detail-usulan/{id}', DetailUsulan::class)->name('detail-usulan');
+    Route::get('/log-buku', LogBuku::class)->name('log-buku');
+    Route::get('/log-pinjam', LogPinjam::class)->name('log-pinjam');
+    Route::get('/log-kategori', LogKategori::class)->name('log-kategori');
+    Route::get('/log-kelas', LogKelas::class)->name('log-kelas');
+    Route::get('/log-member', LogMember::class)->name('log-member');
+    Route::get('/log-ajaran', LogAjaran::class)->name('log-ajaran');
+    Route::get('/detail-log-buku/{id}', DetailLogBuku::class)->name('detail-log-buku');
 });
 
 
