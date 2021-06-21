@@ -36,11 +36,6 @@ class DaftarBuku extends Component
                 // tentukan juga apakah defaultnya ditampilkan apa nggak
                 $key = [
                     [
-                        "key" => $key[0],
-                        "value" => "id",
-                        "show" => true
-                    ],
-                    [
                         "key" => $key[1],
                         "value" => "ISBN",
                         "show" => true

@@ -41,7 +41,6 @@
 			background-repeat: no-repeat;
 		}
 	</style>
-	{{ $param }}
 	<div x-data="datatables()" x-cloak>
 		<div class="mb-4 flex justify-between items-center">
 			<div class="flex-1 pr-4">
