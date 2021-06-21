@@ -64,6 +64,6 @@ class DaftarUsulanBuku extends Component
 
     public function pilihIdUsulan($id) // Wajib
     {
-        return redirect()->route('detail-usulan', $id);
+        // return redirect()->route('detail-usulan', $id);
     }
 }

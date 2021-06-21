@@ -32,6 +32,7 @@ class Table extends Component
     {
         $collection = $this->model::query()
         ->whereRaw("CONCAT($this->param) like '%$this->search%'")
+        ->orderBy('id', 'desc')
         ->paginate(5);
         return view('livewire.components.table', compact('collection'));
     }

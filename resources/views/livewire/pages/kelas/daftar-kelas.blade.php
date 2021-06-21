@@ -1,6 +1,6 @@
 <div>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Daftar Tahun Ajaran
+        Daftar Kelas
     </h2>
 	@if ($idnya)
 	<a href="{{ route('ubah-kelas', $idnya) }}" class="px-2 py-1 bg-blue-500 hover:bg-blue-700 rounded text-white"><i class="bi bi-pencil"></i> Edit</a>

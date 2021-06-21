@@ -3,7 +3,7 @@
         <div class="flex flex-wrap items-center">
             <div class="w-full lg:w-1/4 p-1">
                 <select wire:model.defer="tahun" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    <option value="">Pilih Kelas</option>
+                    <option value="">Pilih Tahun</option>
                     @foreach ($collection as $item)
                     <option value="{{ $item -> id }}">{{ $item -> tahun }}</option>
                     @endforeach

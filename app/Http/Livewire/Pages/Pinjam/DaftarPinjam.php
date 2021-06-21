@@ -61,7 +61,7 @@ class DaftarPinjam extends Component
                 [
                     "key" => $key[9],
                     "value" => "Status",
-                    "show" => true
+                    "show" => false
                 ]
             ]; // Wajib
             $key = json_encode($key); // Wajib
