@@ -17,7 +17,7 @@ class Dashboard extends Component
             'Jumlah Buku' => [
                 'data' => Book::count(),
                 'color' => 'red',
-                'icon' => 'hhhhh'
+                'icon' => 'bi bi-book'
             ],
             'Jumlah Member' => [
                 'data' => Member::count(),
@@ -27,17 +27,17 @@ class Dashboard extends Component
             'Pending' => [
                 'data' => Borrow::where('status', '='. 0)->count(),
                 'color' => 'yellow',
-                'icon' => 'hhhhh'
+                'icon' => 'bi bi-clock-history'
             ],
             'Konfirmasi' => [
                 'data' => Borrow::where('status', '='. 1)->count(),
                 'color' => 'green',
-                'icon' => 'hhhhh'
+                'icon' => 'bi bi-check2-square'
             ],
             'Sedang Dipinjam' => [
                 'data' => Borrow::where('status', '='. 2)->count(),
                 'color' => 'blue',
-                'icon' => 'hhhhh'
+                'icon' => 'bi bi-bag-check-fill'
             ]
         ];
     }

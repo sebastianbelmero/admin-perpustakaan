@@ -35,11 +35,11 @@ class DaftarAnggota extends Component
             // masukkan semua kolom yang ada di database
             // tentukan juga apakah defaultnya ditampilkan apa nggak
             $key = [
-                [
-                    "key" => $key[0],
-                    "value" => "id",
-                    "show" => true
-                ],
+                // [
+                //     "key" => $key[0],
+                //     "value" => "id",
+                //     "show" => true
+                // ],
                 [
                     "key" => $key[1],
                     "value" => "Id Member",

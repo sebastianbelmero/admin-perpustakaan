@@ -2,7 +2,6 @@
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Daftar Anggota
     </h2>
-	id = {{  $idnya }} <br>
 	
 	@if ($idnya)
 	<button onclick="return confirm('Apakah anda yakin ingin menghapus anggota???') || event.stopImmediatePropagation()" wire:click="hapusAnggota()" class="px-2 py-1 bg-red-500 hover:bg-red-700 rounded text-white"><i class="bi bi-trash"></i> Hapus</button>
