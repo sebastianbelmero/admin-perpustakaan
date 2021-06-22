@@ -72,5 +72,12 @@ class DaftarTahunAjaran extends Component
         $this->reset();
         $this->emit('refreshTable');
     }
+    public function hapusTahun($idnya)
+    {
+        $item = TahunAjaran::find($idnya);
+        $item->delete();
+        $this->reset();
+        $this->emit('refreshTable');
+    }
 
 }

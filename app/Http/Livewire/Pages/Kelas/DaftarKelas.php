@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Pages\Kelas;
 
-
+use App\Models\Kelas;
 use App\Models\VKelas;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -60,5 +60,12 @@ class DaftarKelas extends Component
     public function pilihIdKelas($id) // Wajib
     {
         $this->idnya = $id;
+    }
+    public function hapusKelas($idnya)
+    {
+        $item = Kelas::find($idnya);
+        $item->delete();
+        $this->reset();
+        $this->emit('refreshTable');
     }
 }
