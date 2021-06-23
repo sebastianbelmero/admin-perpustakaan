@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class VKelas extends Model
 {
-    protected $table = "v_kelas";
     use HasFactory;
+    protected $table = "v_kelas";
 }

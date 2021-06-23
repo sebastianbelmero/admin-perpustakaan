@@ -43,18 +43,22 @@
         </thead>
         <tbody class="flex-1 sm:flex-none">
             @if (isset($data))
-                @foreach ($data as $book)
-                <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ $book['Judul'] }}</td>
-                    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ $book['ISBN'] }}</td>
-                    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ $book['Penerbit'] }}</td>
-                    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ $book['Pengarang'] }}</td>
-                    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"><button wire:click="pilih('{{ $book['ISBN'] }}')" class="btn btn-primary btn-sm rounded-pill"><i class="fas fa-check"></i></button></td>
-                </tr>
-                @endforeach
+            @forelse ($data as $book)    
+            <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ $book['Judul'] }}</td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ $book['ISBN'] }}</td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ $book['Penerbit'] }}</td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ $book['Pengarang'] }}</td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"><button wire:click="pilih('{{ $book['ISBN'] }}')" class="btn btn-primary btn-sm rounded-pill"><i class="fas fa-check"></i></button></td>
+            </tr>
+            @empty
+            <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                <td colspan="5" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">Data Kosong</td>
+            </tr> 
+            @endforelse
             @else
             <tr>
-                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static" colspan="5">
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b lg:table-cell relative lg:static" colspan="5">
                     <span class="hidden" wire:loading.class="block" wire:loading wire:target="cari">Loading...</span>
                 </td>
             </tr>

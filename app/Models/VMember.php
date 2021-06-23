@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class VMember extends Model
 {
-    protected $table = "v_members";
     use HasFactory;
+    protected $table = "v_members";
 }

@@ -16,6 +16,7 @@ class DaftarTahunAjaran extends Component
     public $tahun=0;
     public $idnya; // Wajib
     public $ada = false; // Wajib
+    public $err;
 
     public function render()
     {
@@ -74,10 +75,14 @@ class DaftarTahunAjaran extends Component
     }
     public function hapusTahun($idnya)
     {
-        $item = TahunAjaran::find($idnya);
-        $item->delete();
-        $this->reset();
-        $this->emit('refreshTable');
+        try {
+            $item = TahunAjaran::find($idnya);
+            $item->delete();
+            $this->reset();
+            $this->emit('refreshTable');
+        } catch (\Throwable $th) {
+            $this->err = true;
+        }
     }
 
 }

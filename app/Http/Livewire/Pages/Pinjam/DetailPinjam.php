@@ -11,6 +11,8 @@ class DetailPinjam extends Component
     public $idnya;
     public $borrow;
 
+    public $err;
+
     public function mount($id)
     {
         $this->idnya = $id;
@@ -37,7 +39,11 @@ class DetailPinjam extends Component
         $borrow->keterangan = $this->borrow['keterangan'];
         $borrow->denda = $this->borrow['denda'];
         $borrow->status = $this->borrow['status'];
-        $borrow->save();
-        return redirect()->route('daftar-pinjam');
+        try {
+            $borrow->save();
+            return redirect()->route('daftar-pinjam');
+        } catch (\Throwable $th) {
+            $this->err = $th->errorInfo[2];
+        }
     }
 }

@@ -16,6 +16,7 @@ class DaftarKategori extends Component
     public $nama = 0;
     public $idnya; // Wajib
     public $ada = false; //wajib
+    public $err;
     
     public function render()
     {
@@ -74,9 +75,13 @@ class DaftarKategori extends Component
     }
     public function hapusKategori($idnya)
     {
-        $item = Category::find($idnya);
-        $item->delete();
-        $this->reset();
-        $this->emit('refreshTable');
+        try {
+            $item = Category::find($idnya);
+            $item->delete();
+            $this->reset();
+            $this->emit('refreshTable');
+        } catch (\Throwable $th) {
+            $this->err = true;
+        }
     }
 }

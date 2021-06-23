@@ -16,7 +16,7 @@ class DaftarBuku extends Component
 
     public $idnya; // Wajib
     public $ada = false; // Wajib
-
+    public $err;
     
     public function render()
     {
@@ -106,9 +106,13 @@ class DaftarBuku extends Component
     }
     public function hapusBuku()
     {
-        $item = Book::find($this->idnya);
-        $item->delete();
-        $this->reset();
-        $this->emit('refreshTable');
+        try {
+            $item = Book::find($this->idnya);
+            $item->delete();
+            $this->reset();
+            $this->emit('refreshTable');
+        } catch (\Throwable $th) {
+            $this->err = true;
+        }
     }
 }

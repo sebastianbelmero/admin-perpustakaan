@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\ErrorPages;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Pages\DaftarBuku;
 use App\Http\Livewire\Pages\DaftarSaran;
@@ -9,6 +10,7 @@ use App\Http\Livewire\Pages\PilihBuku;
 use App\Http\Livewire\Pages\TambahBuku;
 use App\Http\Livewire\Pages\UbahBuku;
 use App\Http\Livewire\Pages\DaftarAnggota;
+use App\Http\Livewire\Pages\DaftarDenda;
 use App\Http\Livewire\Pages\DaftarKategori;
 use App\Http\Livewire\Pages\Detail\DetailSaran;
 use App\Http\Livewire\Pages\Detail\DetailUsulan;
@@ -41,7 +43,7 @@ use App\Http\Livewire\Pages\TambahKategori;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/daftar-buku', DaftarBuku::class)->name('daftar-buku');
     Route::get('/daftar-saran', DaftarSaran::class)->name('daftar-saran');
     Route::get('/daftar-usulan-buku', DaftarUsulanBuku::class)->name('daftar-usulan-buku');
@@ -71,7 +73,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/log-member', LogMember::class)->name('log-member');
     Route::get('/log-ajaran', LogAjaran::class)->name('log-ajaran');
     Route::get('/detail-log-buku/{id}', DetailLogBuku::class)->name('detail-log-buku');
+    Route::get('/daftar-denda', DaftarDenda::class)->name('daftar-denda');
 });
+Route::get('/error', function(){
+    return view('error-login');
+})->name('error-login');
 
 
 
